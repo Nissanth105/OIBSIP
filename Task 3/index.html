@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
+</head>
+<style>
+a:hover,
+    a:active {
+        text-decoration: none;
+    }
+
+    .home {
+        width: 100%;
+    }
+
+    .home:before {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .home h3 {
+         position: absolute;
+        font-size: 74px;
+        text-align: left;
+        color: #009393;
+        left: 15px; 
+        top: 15px; 
+        font-weight: 700;
+    }
+
+    .stage {
+        width: auto;
+        margin-top: 15px;
+        height: 100px;
+    }
+
+    .cubespinner {
+        -webkit-animation-name: spincube;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-duration: 8s;
+        animation-name: spincube;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 8s;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transform-origin: 40px 40px 0;
+        -moz-transform-origin: 40px 40px 0;
+        -ms-transform-origin: 40px 40px 0;
+        transform-origin: 40px 40px 0;
+    }
+
+    .cubespinner div {
+        position: absolute;
+        width: 600px;
+        height: 80px;
+        text-align: left;
+        font-size: 70px;
+        font-weight: 700;
+    }
+
+    .cubespinner .face1 {
+        -webkit-transform: translateZ(40px);
+        -moz-transform: translateZ(40px);
+        -ms-transform: translateZ(40px);
+        transform: translateZ(40px);
+        -webkit-backface-visibility: hidden;
+    }
+
+    .cubespinner .face2 {
+        -webkit-transform: rotateX(90deg) translateZ(40px);
+        -moz-transform: rotateX(90deg) translateZ(40px);
+        -ms-transform: rotateX(90deg) translateZ(40px);
+        transform: rotateX(90deg) translateZ(40px);
+        -webkit-backface-visibility: hidden;
+    }
+
+    .cubespinner .face3 {
+        -webkit-transform: rotateX(180deg) translateZ(40px);
+        -moz-transform: rotateX(180deg) translateZ(40px);
+        -ms-transform: rotateX(180deg) translateZ(40px);
+        transform: rotateX(180deg) translateZ(40px);
+        -webkit-backface-visibility: hidden;
+    }
+
+    .cubespinner .face4 {
+        -webkit-transform: rotateX(270deg) translateZ(40px);
+        -moz-transform: rotateX(270deg) translateZ(40px);
+        -ms-transform: rotateX(270deg) translateZ(40px);
+        transform: rotateX(270deg) translateZ(40px);
+        -webkit-backface-visibility: hidden;
+    }
+
+    
+    @-webkit-keyframes spincube {
+        from,
+        to {
+            -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+
+        15% {
+            -webkit-transform: rotateX(90deg);
+        }
+
+        25% {
+            -webkit-transform: rotateX(90deg);
+        }
+
+        40% {
+            -webkit-transform: rotateX(180deg);
+        }
+
+        50% {
+            -webkit-transform: rotateX(180deg);
+        }
+
+        65% {
+            -webkit-transform: rotateX(270deg);
+        }
+
+        75% {
+            -webkit-transform: rotateX(270deg);
+        }
+
+        95% {
+            -webkit-transform: rotateX(360deg);
+        }
+
+        100% {
+            -webkit-transform: rotateX(360deg);
+        }
+    }
+
+    @keyframes spincube {
+        from,
+        to {
+            -webkit-transform: rotateX(0deg);
+            -moz-transform: rotateX(0deg);
+            -ms-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+        }
+
+        15% {
+            -webkit-transform: rotateX(90deg);
+            -moz-transform: rotateX(90deg);
+            -ms-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+        }
+
+        25% {
+            -webkit-transform: rotateX(90deg);
+            -moz-transform: rotateX(90deg);
+            -ms-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+        }
+
+        40% {
+            -webkit-transform: rotateX(180deg);
+            -moz-transform: rotateX(180deg);
+            -ms-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+        }
+
+        50% {
+            -webkit-transform: rotateX(180deg);
+            -moz-transform: rotateX(180deg);
+            -ms-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+        }
+
+        65% {
+            -webkit-transform: rotateX(270deg);
+            -moz-transform: rotateX(270deg);
+            -ms-transform: rotateX(270deg);
+            transform: rotateX(270deg);
+        }
+
+        75% {
+            -webkit-transform: rotateX(270deg);
+            -moz-transform: rotateX(270deg);
+            -ms-transform: rotateX(270deg);
+            transform: rotateX(270deg);
+        }
+
+        90% {
+            -webkit-transform: rotateX(360deg);
+            -moz-transform: rotateX(360deg);
+            -ms-transform: rotateX(360deg);
+            transform: rotateX(360deg);
+        }
+
+        100% {
+            -webkit-transform: rotateX(360deg);
+            -moz-transform: rotateX(360deg);
+            -ms-transform: rotateX(360deg);
+            transform: rotateX(360deg);
+        }
+    }
+
+    
+    .font1 {
+        font-family: Lucida Handwriting, cursive;
+    }
+
+    .font2 {
+        font-family: Papyrus, cursive;
+    }
+
+    .font3 {
+        font-family: Courier New, monospace;
+    }
+
+    .font4 {
+        font-family: Garamond, Serif;
+    }
+ * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	background-image: url("https://t4.ftcdn.net/jpg/02/76/08/09/360_F_276080959_1pr6XROX5wssoNDZEYUg8MEfnBjwfC8W.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+}
+
+.container {
+	position: relative;
+	max-width: 800px;
+	padding: 10px;
+	margin: 50px auto;
+}
+
+.addTask {
+	width: 100%;
+	display: flex;
+	padding: 10px 0;
+}
+
+.addTask > input[type="text"] {
+	width: 90%;
+	color: #333;
+	border: none;
+	border-bottom: 2px solid #666;
+	background: none;
+	padding: 10px;
+	font-size: 22px;
+	outline: none;
+}
+
+.addTask button {
+	margin: 0 10px;
+	background: #222;
+	color: #fff;
+	font-size: 18px;
+	text-transform: uppercase;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.tasks {
+	display: flex;
+	justify-content: space-between;
+}
+
+.tasks ol {
+	flex: 1;
+	margin: 5px;
+	padding: 20px;
+}
+
+h3 {
+	font-size: 36px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+}
+
+ol {
+	list-style: none;
+	counter-reset: my-counter;
+}
+
+ol li {
+	width: 100%;
+	padding: 18px;
+	margin: 5px 0;
+	background: #e96969bb;
+	font-size: 30px;
+	counter-increment: my-counter;
+}
+
+ol.Completed li {
+	background: #00ff62;
+}
+
+ol li::before {
+	content: counter(my-counter);
+	background: #231381;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	display: inline-block;
+	line-height: 2rem;
+	text-align: center;
+	color: #fff;
+	margin-right: 0.5rem;
+}
+
+li button {
+	float: right;
+	padding: 5px;
+	font-size: 28px;
+	line-height: 28px;
+	margin-right: 15px;
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.timestamp {
+	font-size: 16px;
+	color: black;
+	margin-top: 5px;
+	display: block;
+  font-style: italic; 
+    font-family: Arial, sans-serif;
+}
+
+.description-box {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  
+}
+
+.resetBtn {
+  margin-left: 10px;
+  background: #222;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+<body>
+<div class="home col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h3 id="resizing-h3" class="">
+        <span>
+            <div class="stage">
+                <div class="cubespinner">
+                    <div class="face1">To-Do List</div>
+                    <div class="face2">To-Do List</div>
+                    <div class="face3">To-Do List</div>
+                    <div class="face4">To-Do List</div>
+                </div>
+            </div>
+        </span>
+    </h3>
+</div>
+  <div class="container">
+    <div class="addTask">
+      <input type="text" placeholder="Add a Task">
+      <button class="addBtn">Add</button>
+      <button class="resetBtn">Reset</button>
+    </div>
+
+    <div class="tasks">
+      <ol class="notCompleted">
+        <h3>Not Completed</h3>
+      </ol>
+
+      <ol class="Completed">
+        <h3>Completed</h3>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    const faces = document.querySelectorAll('.cubespinner div');
+
+    faces.forEach((face) => {
+        const randomColor = getRandomColor();
+        const randomFont = getRandomFont();
+        face.style.color = randomColor;
+        face.style.fontFamily = randomFont;
+    });
+
+    
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    
+    function getRandomFont() {
+        const fonts = ['Lucida Handwriting, cursive', 'Copperplate, fantasy', 'Courier New, monospace', 'Garamond, Serif','Candara, Sans-serif', 'Goudy Old Style, serif'];
+        const randomIndex = Math.floor(Math.random() * fonts.length);
+        return fonts[randomIndex];
+    }
+    const input = document.querySelector('input');
+    const addBtn = document.querySelector('.addBtn');
+    const resetBtn = document.querySelector('.resetBtn');
+    const notCompletedList = document.querySelector('.notCompleted');
+    const completedList = document.querySelector('.Completed');
+
+    
+    document.addEventListener('DOMContentLoaded', loadTasks);
+
+    addBtn.addEventListener('click', addList);
+    input.addEventListener('keyup', (e) => {
+      (e.keyCode === 13 ? addList(e) : null);
+    });
+
+    resetBtn.addEventListener('click', resetTasks);
+
+    function addList(e) {
+      const taskText = input.value;
+      if (taskText.trim() !== '') {
+        const newLi = document.createElement('li');
+        const taskInfo = document.createElement('div');
+        const descInput = document.createElement('textarea');
+        const timestampEl = document.createElement('span');
+        const checkBtn = document.createElement('button');
+        const delBtn = document.createElement('button');
+
+        checkBtn.innerHTML = '<i class="fa fa-check"></i>';
+        delBtn.innerHTML = '<i class="fa fa-trash"></i>';
+
+        newLi.appendChild(taskInfo);
+        taskInfo.textContent = taskText;
+        taskInfo.appendChild(checkBtn);
+        taskInfo.appendChild(delBtn);
+
+        newLi.appendChild(descInput);
+        descInput.placeholder = 'Enter description...';
+        descInput.classList.add('description-box');
+
+        const addedTimestamp = new Date().toLocaleString();
+        timestampEl.textContent = `Added: ${addedTimestamp}`;
+        timestampEl.classList.add('timestamp');
+        newLi.appendChild(timestampEl);
+
+        checkBtn.addEventListener('click', function () {
+          const parent = this.parentNode.parentNode;
+          parent.remove();
+          completedList.appendChild(parent);
+          parent.classList.add('completed-task');
+          checkBtn.style.display = 'none';
+          const completedTimestamp = new Date().toLocaleString();
+          timestampEl.textContent = `Completed: ${completedTimestamp}`;
+          saveTasks();
+        });
+
+        delBtn.addEventListener('click', function () {
+          const parent = this.parentNode.parentNode;
+          parent.remove();
+          saveTasks();
+        });
+
+        input.value = '';
+        notCompletedList.appendChild(newLi);
+        saveTasks();
+      }
+      e.preventDefault();
+    }
+
+    function saveTasks() {
+      const notCompletedTasks = Array.from(document.querySelectorAll('.notCompleted li')).map((li) => ({
+        taskText: li.querySelector('div').textContent,
+        description: li.querySelector('.description-box').value,
+        timestamp: li.querySelector('.timestamp').textContent
+      }));
+      const completedTasks = Array.from(document.querySelectorAll('.Completed li')).map((li) => ({
+        taskText: li.querySelector('div').textContent,
+        description: li.querySelector('.description-box').value,
+        timestamp: li.querySelector('.timestamp').textContent
+      }));
+      localStorage.setItem('notCompletedTasks', JSON.stringify(notCompletedTasks));
+      localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+    }
+
+    function loadTasks() {
+      const notCompletedTasks = JSON.parse(localStorage.getItem('notCompletedTasks')) || [];
+      const completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+
+      notCompletedTasks.forEach((task) => {
+        const newLi = createTaskElement(task.taskText, task.description, task.timestamp);
+        notCompletedList.appendChild(newLi);
+      });
+
+      completedTasks.forEach((task) => {
+        const newLi = createTaskElement(task.taskText, task.description, task.timestamp);
+        newLi.classList.add('completed-task');
+        const checkBtn = newLi.querySelector('button');
+        checkBtn.style.display = 'none';
+        completedList.appendChild(newLi);
+      });
+    }
+
+    function createTaskElement(taskText, description, timestamp) {
+      const newLi = document.createElement('li');
+      const taskInfo = document.createElement('div');
+      const descInput = document.createElement('textarea');
+      const timestampEl = document.createElement('span');
+      const checkBtn = document.createElement('button');
+      const delBtn = document.createElement('button');
+
+      checkBtn.innerHTML = '<i class="fa fa-check"></i>';
+      delBtn.innerHTML = '<i class="fa fa-trash"></i>';
+
+      taskInfo.textContent = taskText;
+      taskInfo.appendChild(checkBtn);
+      taskInfo.appendChild(delBtn);
+      newLi.appendChild(taskInfo);
+
+      descInput.value = description;
+      descInput.placeholder = 'Enter description...';
+      descInput.classList.add('description-box');
+      newLi.appendChild(descInput);
+
+      timestampEl.textContent = timestamp;
+      timestampEl.classList.add('timestamp');
+      newLi.appendChild(timestampEl);
+
+      checkBtn.addEventListener('click', function () {
+        const parent = this.parentNode.parentNode;
+        parent.remove();
+        completedList.appendChild(parent);
+        parent.classList.add('completed-task');
+        checkBtn.style.display = 'none';
+        const completedTimestamp = new Date().toLocaleString();
+        timestampEl.textContent = `Completed: ${completedTimestamp}`;
+        saveTasks();
+      });
+
+      delBtn.addEventListener('click', function () {
+        const parent = this.parentNode.parentNode;
+        parent.remove();
+        saveTasks();
+      });
+
+      return newLi;
+    }
+
+    function resetTasks() {
+      const notCompletedTasks = Array.from(notCompletedList.querySelectorAll('li:not(:first-child)'));
+      const completedTasks = Array.from(completedList.querySelectorAll('li:not(:first-child)'));
+
+      notCompletedTasks.forEach((task) => {
+        task.remove();
+      });
+
+      completedTasks.forEach((task) => {
+        task.remove();
+      });
+
+      localStorage.removeItem('notCompletedTasks');
+      localStorage.removeItem('completedTasks');
+    }
+  </script>
+</body>
+</html>
